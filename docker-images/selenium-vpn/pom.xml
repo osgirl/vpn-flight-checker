@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>com.ae.vpn</groupId>
+    <artifactId>docker-images</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>selenium-vpn</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>pom</packaging>
+  <name>VPN enhanched selenium</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>0.2.6</version>
+        <configuration>
+          <dockerDirectory>docker</dockerDirectory>
+          <imageName>ae/selenium-vpn</imageName>
+          <dockerHost>${docker.host}</dockerHost>
+          <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <id>build-docker</id>
+            <phase>package</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
